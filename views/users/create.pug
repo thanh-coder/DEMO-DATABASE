@@ -1,0 +1,23 @@
+extends ../layouts/common.pug
+block content
+  .ml-5
+    h1 create user
+    if erros
+       each error in erros
+         .alert.alert-danger=error
+
+    form(action="/users/create", method="POST",enctype="multipart/form-data") 
+      .form-group.mb-2
+        label.mr-1(for="name") name
+        br
+        input#name.form-control(name="name",type="text",value=values ? values.name:"")
+      .form-group.mb-2
+
+        label.mr-1(for="name1") phone
+        br
+        input#name1.form-control(name="phone",type="text",value=values ? values.phone:"")
+      .form-group.mb-2
+        label.mr-1(for="avatar") avatar
+        br
+        input#avatar.form-control-file(name="avatar",type="file",value=values ? values.name:"")
+      button.btn.btn-primary Create

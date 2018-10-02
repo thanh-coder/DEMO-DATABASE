@@ -1,0 +1,21 @@
+extends ../layouts/common.pug
+block content
+  .ml-5
+    h1 create user
+    if erros
+       each error in erros
+         .alert.alert-danger=error
+
+    form(action="/transfer/create", method="POST") 
+      input(type="hidden",name="_csrf",value=csrfToken)
+      .form-group.mb-2
+        label.mr-1(for="account") Account
+        br
+        input#account.form-control(name="account",type="text",value=values ? values.name:"")
+      
+      .form-group.mb-2
+        label.mr-1(for="amount") Amount
+        br
+        input#amount.form-control(name="amount",type="number",value=values ? values.name:"")
+      
+      button.btn.btn-primary Transfer
